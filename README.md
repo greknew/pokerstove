@@ -1,3 +1,7 @@
+Fork from [Pokerstove](https://github.com/andrewprock/pokerstove)
+Added PLO5 & PLO6 support
+
+
 PokerStove
 ==========
 
@@ -79,6 +83,8 @@ example:
          h     hold'em
          o     omaha/8
          O     omaha high
+         O5    omaha high 5 cards
+         O6    omaha high 6 cards
          r     razz
          s     stud
          e     stud/8
