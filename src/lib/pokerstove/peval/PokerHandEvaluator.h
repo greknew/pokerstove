@@ -72,6 +72,8 @@ public:
      * - 'l'    lowball (A-5)
      * - '3'    three card poker
      * - 'O'    omaha high
+     * - 'O5'   omaha five card high
+     * - 'O6'   omaha six card high
      * - 'r'    razz
      * - 's'    stud
      * - 'q'    stud high/low no qualifier
