@@ -8,6 +8,8 @@
 #include "RazzHandEvaluator.h"
 #include "StudEightHandEvaluator.h"
 #include "OmahaHighHandEvaluator.h"
+#include "OmahaFiveHighHandEvaluator.h"
+#include "OmahaSixHighHandEvaluator.h"
 #include "OmahaEightHandEvaluator.h"
 #include "DeuceToSevenHandEvaluator.h"
 #include "DrawHighHandEvaluator.h"
@@ -24,6 +26,7 @@ using namespace pokerstove;
 boost::shared_ptr<PokerHandEvaluator> PokerHandEvaluator::alloc (const string & strid)
 {
   boost::shared_ptr<PokerHandEvaluator> ret;
+
   switch (strid[0])
     {
     case 'h':		//     hold'em
@@ -46,7 +49,12 @@ boost::shared_ptr<PokerHandEvaluator> PokerHandEvaluator::alloc (const string & 
 
     case 'O':		//     omaha high
       //ret.reset (new UniversalHandEvaluator (4,4,3,5,2,&CardSet::evaluateHigh, NULL));
-      ret.reset (new OmahaHighHandEvaluator);
+      if (strid[1] == '5')     
+        ret.reset (new OmahaFiveHighHandEvaluator);
+      else if (strid[1] == '6')
+        ret.reset (new OmahaSixHighHandEvaluator);
+      else
+        ret.reset (new OmahaHighHandEvaluator);
       break;
 
     case 'p':		//     pot limit
@@ -109,7 +117,6 @@ boost::shared_ptr<PokerHandEvaluator> PokerHandEvaluator::alloc (const string & 
       break;
 
     }
-
   ret->_subclassID = strid;
 
   return ret;
